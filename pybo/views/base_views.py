@@ -4,8 +4,12 @@ from django.db.models import Q
 
 from ..models import Question
 
+import logging
+logger = logging.getLogger('pybo')
+
 
 def index(request):
+    logger.info("INFO 레벨로 출력")
     question_list = Question.objects.order_by('-create_date')
     kw = request.GET.get('kw','')
     if kw:
